@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hangman Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="HangmanGame.js"></script>
+</head>
+
+<body>
+    <h2>Introduce una letra</h2>
+    <div>
+        <input type="text" id="word" maxlength="1">
+        <input type="submit" onclick="game.cont()">
+    </div>
+    <h2>Intentos</h2>
+    <div id="numtr">5</div>
+    <h2>Historial</h2>
+    <div id="history"></div>
+</body>
