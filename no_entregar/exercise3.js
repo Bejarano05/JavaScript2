@@ -2,7 +2,7 @@
 var cadena = {
     sinInvertir: function () {
         //Guardo la cadena en una variable nueva
-        let cad = document.getElementById("string").value;
+        let cad = document.getElementById("word").value;
         return cad;
     },
     invertida: function () {
@@ -15,8 +15,9 @@ var cadena = {
             cadenaInvertida = cadenaInvertida + this.sinInvertir().charAt(x);
             x--;
         }
-        alert(cadenaInvertida);
-        // return cadenaInvertida;
+        document.getElementById("word").value = cadenaInvertida;
+        //alert(cadenaInvertida);
+        return cadenaInvertida;
     },
     encriptar: function () {
 
@@ -37,7 +38,9 @@ var cadena = {
                 }
             }
         }
-        alert(fin);
+        document.getElementById("word").value = fin;
+        return fin;
+
     },
     desencriptar: function () {
         let x = 0;
@@ -56,10 +59,7 @@ var cadena = {
                 }
             }
         }
-        alert(fin);
-    },
-
-    visualizaCadena: function (cad) {
-        document.write(cad);
+        document.getElementById("word").value = fin;
+        return fin;
     }
 };
