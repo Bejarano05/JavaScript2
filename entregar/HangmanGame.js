@@ -1,10 +1,9 @@
 
-var words = ["dog", "cat", "lion", "tiger", "parrot"]; //Array con las palabras disponibles.
+var words = ["dog", "cat", "lion", "tiger", "parrot","cow","goat","pig","sheep","llama","prawn","jellyfish","lobster","squid","skunk","bear","eagle","butterfly"]; //Array con las palabras disponibles.
 var word = words[Math.floor(Math.random() * words.length)]; //Elige una palabra del array anterior
 var wordslength = [];
 var attempts = 7;
 let remainingLetters = word.length;
-
 alert(word);
 for (var i = 0; i < word.length; i++) {
     wordslength[i] = "_";
@@ -27,13 +26,12 @@ function comprobar() {
             }
         }
         if(!found){
-            alert("Te has equivocado. Te restan "+attempts+" intentos.");
-            attempts--;            
+            attempts--;   
+            document.getElementById("numtr").value = attempts;         
         } 
     }
     if(remainingLetters==0){        
         alert("Victoria");
     }
     document.getElementById("letter").value="";
-    
 }
