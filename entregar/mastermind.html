@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Master mind</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="mastermind.js"></script>
+    <script>
+        $(document).ready(function () { 
+            $("#cheat").hide();
+            $("#show").click(function(){
+                $("#cheat").fadeToggle();
+            })
+
+        });
+    </script>
+</head>
+
+<body>
+    <input type="number" id="inp_num" maxlength="4">
+    <input type="submit" value="Comprobar" onclick="cal()">
+    <input type="submit" id="show" value="Mostrar/Ocultar resultado">
+    <input type="text" id="cheat" value="Intentalo primero gachon"></p>
+    <p id="res"></p>
+    <p id="finalres"></p>
+
+</body>
