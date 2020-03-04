@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hangman Game</title>
+    <title>Queens</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="queens.js"></script>
     <style>
         table,
         tr,
@@ -27,96 +26,142 @@
     </style>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-            $(".ajedrez td").on("click", function (event) {
-                $(this).css("background-image", "url(reina.png)");
-                $(this).css("background-size", "50px");
-            })
-    });
-</script>
+
 
 <body>
-    <table class="ajedrez">
-        <tr id="fila1">
-            <td>A1</td>
-            <td>B1</td>
-            <td>C1</td>
-            <td>D1</td>
-            <td>E1</td>
-            <td>F1</td>
-            <td>G1</td>
-            <td>H1</td>
+    <table id="ajedrez">
+        <tr>
+            <td value="11"></td>
+            <td value="12"></td>
+            <td value="13"></td>
+            <td value="14"></td>
+            <td value="15"></td>
+            <td value="16"></td>
+            <td value="17"></td>
+            <td value="18"></td>
         </tr>
-        <tr id="fila2">
-            <td>A2</td>
-            <td>B2</td>
-            <td>C2</td>
-            <td>D2</td>
-            <td>E2</td>
-            <td>F2</td>
-            <td>G2</td>
-            <td>H2</td>
+        <tr>
+            <td value="21"></td>
+            <td value="22"></td>
+            <td value="23"></td>
+            <td value="24"></td>
+            <td value="25"></td>
+            <td value="26"></td>
+            <td value="27"></td>
+            <td value="28"></td>
         </tr>
-        <tr id="fila3">
-            <td>A3</td>
-            <td>B3</td>
-            <td>C3</td>
-            <td>D3</td>
-            <td>E3</td>
-            <td>F3</td>
-            <td>G3</td>
-            <td>H3</td>
+        <tr>
+            <td value="31"></td>
+            <td value="32"></td>
+            <td value="33"></td>
+            <td value="34"></td>
+            <td value="35"></td>
+            <td value="36"></td>
+            <td value="37"></td>
+            <td value="38"></td>
         </tr>
-        <tr id="fila4">
-            <td>A4</td>
-            <td>B4</td>
-            <td>C4</td>
-            <td>D4</td>
-            <td>E4</td>
-            <td>F4</td>
-            <td>G4</td>
-            <td>H4</td>
+        <tr>
+            <td value="41"></td>
+            <td value="42"></td>
+            <td value="43"></td>
+            <td value="44"></td>
+            <td value="45"></td>
+            <td value="46"></td>
+            <td value="47"></td>
+            <td value="48"></td>
         </tr>
-        <tr id="fila5">
-            <td>A5</td>
-            <td>B5</td>
-            <td>C5</td>
-            <td>D5</td>
-            <td>E5</td>
-            <td>F5</td>
-            <td>G5</td>
-            <td>H5</td>
+        <tr>
+            <td value="51"></td>
+            <td value="52"></td>
+            <td value="53"></td>
+            <td value="54"></td>
+            <td value="55"></td>
+            <td value="56"></td>
+            <td value="57"></td>
+            <td value="58"></td>
         </tr>
-        <tr id="fila6">
-            <td>A6</td>
-            <td>B6</td>
-            <td>C6</td>
-            <td>D6</td>
-            <td>E6</td>
-            <td>F6</td>
-            <td>G6</td>
-            <td>H6</td>
+        <tr>
+            <td value="61"></td>
+            <td value="62"></td>
+            <td value="63"></td>
+            <td value="64"></td>
+            <td value="65"></td>
+            <td value="66"></td>
+            <td value="67"></td>
+            <td value="68"></td>
         </tr>
-        <tr id="fila7">
-            <td>A7</td>
-            <td>B7</td>
-            <td>C7</td>
-            <td>D7</td>
-            <td>E7</td>
-            <td>F7</td>
-            <td>G7</td>
-            <td>H7</td>
+        <tr>
+            <td value="71"></td>
+            <td value="72"></td>
+            <td value="73"></td>
+            <td value="74"></td>
+            <td value="75"></td>
+            <td value="76"></td>
+            <td value="77"></td>
+            <td value="78"></td>
         </tr>
-        <tr id="fila8">
-            <td>A8</td>
-            <td>B8</td>
-            <td>C8</td>
-            <td>D8</td>
-            <td>E8</td>
-            <td>F8</td>
-            <td>G8</td>
-            <td>H8</td>
+        <tr>
+            <td value="81"></td>
+            <td value="82"></td>
+            <td value="83"></td>
+            <td value="84"></td>
+            <td value="85"></td>
+            <td value="86"></td>
+            <td value="87"></td>
+            <td value="88"></td>
         </tr>
     </table>
+    <p id="result"></p>
+    <input type="submit" value="Volver a jugar" onclick="location.reload()">
+    <script>
+        $(document).ready(function () {
+            let n = 0;
+            let play = 1;
+            //En estas variables guardaremos las cordenadas donde se encuentran las reinas
+            let cordax = "";
+            let corday = "";
+            let cordbx = "";
+            let cordby = "";
+            //Limitamos el click en dos veces
+            $("#ajedrez td").on("click", function (event) {
+                if (n < 2) {
+                    n++;
+                    if (play === 1) {
+                        play = 2;
+                        $(this).css("background-image", "url(whitequeen.png)");
+                        $(this).css("background-size", "50px");
+                        let posa = $(this).attr("value");
+                        //Pasamos las coordenadas que hemos cogido en la linea anterior en los ejes x e y
+                        cordax = posa.charAt(0);
+                        corday = posa.charAt(1);
+                    }
+                    else if (play === 2) {
+                        play = null;
+                        $(this).css("background-image", "url(blackqueen.png)");
+                        $(this).css("background-size", "50px");
+                        let posb = $(this).attr("value");
+                        cordbx = posb.charAt(0);
+                        cordby = posb.charAt(1);
+                    }
+                    if (n === 2) {
+                        //Si la resta en valor absoluto de cada eje de coordenadas son iguales, estas serán corte oblicuo
+                        let difx = Math.abs(cordax - cordbx);
+                        let dify = Math.abs(corday - cordby);
+                        if (cordax === cordbx) {
+                            $("#result").prepend("Se cortan horizontalmente")
+                        }
+                        else if (corday === cordby) {
+                            $("#result").prepend("Se cortan verticalmente")
+                        }
+                        else if(difx===dify){
+                            $("#result").prepend("Se cortan en diagonal")
+                        }
+                        else{
+                            $("#result").prepend("No se pueden matar")
+                        }
+                    }
+                }
+            })
+        });
+    </script>
 </body>
