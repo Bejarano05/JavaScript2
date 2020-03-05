@@ -1,6 +1,7 @@
 
 var words = ["dog", "cat", "lion", "tiger", "parrot","cow","goat","pig","sheep","llama","prawn","jellyfish","lobster","squid","skunk","bear","eagle","butterfly"]; //Array con las palabras disponibles.
 var word = words[Math.floor(Math.random() * words.length)]; //Elige una palabra del array anterior
+var word2 = word;
 var wordslength = [];
 var attempts = 7;
 let remainingLetters = word.length;
@@ -14,7 +15,7 @@ function comprobar() {
 
     var found = false;
     if(attempts<=0){
-        alert("derrota");
+        alert("derrota, la palabra era: "+ word2);
         return;
     }
     
@@ -26,6 +27,8 @@ function comprobar() {
                 remainingLetters--;
                 found = true;
                 document.getElementById("theword").innerHTML = wordslength;
+                word = word.replace(word.charAt(j),"_");
+
             }
         }
         //Resta intentos si el caracter no se encuentra en la palabra
