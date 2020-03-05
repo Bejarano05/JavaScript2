@@ -7,7 +7,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="getting15.js"></script>
+    <style>
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+    
 </head>
 <body>
-    
+    <table>
+        <tr id="points">
+            <td value="1">1</td>
+            <td value="2">2</td>
+            <td value="3">3</td>
+            <td value="4">4</td>
+            <td value="5">5</td>
+            <td value="6">6</td>
+            <td value="7">7</td>
+            <td value="8">8</td>
+            <td value="9">9</td>
+        </tr>
+        <tr id="clicks">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <script>
+        $(document).ready(function(){
+            var play=1;
+            var ponita=0;
+            var totala=0;
+            var ponitb=0;
+            var totalb=0;
+            $("#clicks td").click(function(){
+                if(play===1){
+                    $(this).css("background-color","blue");
+                    pointa = parseInt($("#points td").attr("value"));
+                    alert(pointa);
+                    totala=totala+pointa;
+                    alert(totala);
+                    play=2;
+                }
+                else if(play===2){
+                    $(this).css("background-color","red");
+                    play=1;
+                }
+            });
+        });
+    </script>
 </body>
