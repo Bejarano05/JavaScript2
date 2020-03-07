@@ -22,52 +22,85 @@
             height: 50px;
         }
     </style>
-    
+
 </head>
+
 <body>
     <table>
         <tr id="points">
-            <td value="1">1</td>
-            <td value="2">2</td>
-            <td value="3">3</td>
-            <td value="4">4</td>
-            <td value="5">5</td>
-            <td value="6">6</td>
-            <td value="7">7</td>
-            <td value="8">8</td>
-            <td value="9">9</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
         </tr>
         <tr id="clicks">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td value="1"></td>
+            <td value="2"></td>
+            <td value="3"></td>
+            <td value="4"></td>
+            <td value="5"></td>
+            <td value="6"></td>
+            <td value="7"></td>
+            <td value="8"></td>
+            <td value="9"></td>
         </tr>
     </table>
+    <p id="play1"></p><br>
+    <p id="play2"></p><br>
+    <p id="draw"></p>
+    <input type="submit" value="Volver a jugar" onclick="location.reload()">
     <script>
-        $(document).ready(function(){
-            var play=1;
-            var ponita=0;
-            var totala=0;
-            var ponitb=0;
-            var totalb=0;
-            $("#clicks td").click(function(){
-                if(play===1){
-                    $(this).css("background-color","blue");
-                    pointa = parseInt($("#points td").attr("value"));
-                    alert(pointa);
-                    totala=totala+pointa;
-                    alert(totala);
-                    play=2;
+        $(document).ready(function () {
+            var play = 1;
+            var ponita = 0;
+            var totala = 0;
+            var ponitb = 0;
+            var totalb = 0;
+            var times = 0;
+            $("#clicks td").click(function () {
+                if (times < 3) { //Limitamos las casillas que podemos marcar a 3 rondas
+                    if (play === 1) {
+                        $(this).css("background-color", "blue"); //Cambia de color la casilla
+                        pointa = parseInt($(this).attr("value")); //Recoge su valor 
+                        totala = totala + pointa; 
+                        $("#play1").html("Puntuación jugador1: " + totala)
+                        play = 2; // Cambia de turno del jugador
+                    }
+                    else if (play === 2) {
+                        $(this).css("background-color", "red");
+                        pointb = parseInt($(this).attr("value"));
+                        totalb = totalb + pointb;
+                        $("#play2").html("Puntuación jugador1: " + totalb)
+                        play = 1;
+                        times++; //Una vez el turno de jugador 2 acaba una ronda
+                    }
                 }
-                else if(play===2){
-                    $(this).css("background-color","red");
-                    play=1;
+                // Comprobamos los resultados obtenidos
+                if (totala == 15) {
+                    $("#play1").html("Ganador jugador 1");
+                    $("#play2").html("Perdedor jugador 2");
+                }
+                else if (totalb == 15) {
+                    $("#play1").html("Perdedor jugador 1");
+                    $("#play2").html("Ganador jugador 2");
+                }
+                else if (totalb > 15 && totala > 15) {
+                    $("#play1").html("Jugador 1 ya no puede ganar");
+                    $("#play2").html("Jugador 2 ya no puede ganar");
+                }
+                else if (totala > 15) {
+                    $("#play1").html("Jugador 1 ya no puede ganar");
+                }
+                else if (totalb > 15) {
+                    $("#play2").html("Jugador 2 ya no puede ganar");
+                }
+                else if (times >= 3) {
+                    $("#draw").html("Hay un empate");
                 }
             });
         });
