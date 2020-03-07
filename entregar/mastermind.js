@@ -13,6 +13,7 @@ while (num4 === num1 || num4 === num2 || num4 === num3) {
     var num4 = Math.round(Math.random() * (9 - 1) + 1);
 }
 var x = (num1 * 1000) + (num2 * 100) + (num3 * 10) + (num4);
+
 function cal(){
     document.getElementById("cheat").value = x;
     let n1 = document.getElementById("inp_num").value;
